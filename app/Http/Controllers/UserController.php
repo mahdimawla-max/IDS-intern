@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class UserController extends Controller
 {
@@ -29,5 +31,17 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         return $user;
        
+    }
+    function authenticateUser(Request $request) {
+        try {
+            $user = User::where('email', $request->email)->firstOrFail();
+            if ($request->password == $user->password) {
+                return view('pages.home');
+            } else {
+                return response()->json(['error' => 'Invalid password'], 401);
+            }
+        } catch (ModelNotFoundException $e) {
+            return response()->json(['error' => 'User not found'], 404);
+        }
     }
 }

@@ -11,8 +11,27 @@ use Laravel\Sanctum\HasApiTokens;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('pages.login');
 });
+Route::get('/register', function () {
+    return view('pages.register');
+});
+Route::get('/post', function () {
+    return view('pages.post');
+})->name('post');
+Route::get('/profile', function () {
+    return view('pages.profile');
+});
+Route::get('/home', function () {
+    return view('pages.home');
+});
+Route::post('/upload-photo', [PostController::class, 'store'])->name('upload.photo');
+
+
+
+
+
+Route::post('/signin', [UserController::class,'authenticateUser'] );
 Route::get('/users',[UserController::class,'getAllUsers']);
 Route::post('/create-user',[UserController::class,'create']);
 Route::post('/update-user/{id}',[UserController::class,'update']);

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id()->primary()->autoIncrement();
             $table->text('content');
+            $table->text('description')->nullable();
             $table->foreignId('userid')->constrained()
             ->onDelete('cascade')
             ->onUpdate('cascade')
