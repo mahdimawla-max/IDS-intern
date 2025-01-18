@@ -69,6 +69,7 @@ class PostController extends Controller
         // Return the file path as a JSON response
         return response()->json(['photoPath' => asset('storage/' . $photoPath)]);
     }
+
 }
 
 

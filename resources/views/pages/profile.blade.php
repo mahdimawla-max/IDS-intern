@@ -1,104 +1,91 @@
 @extends('welcome')
 @section('content')
-<section class="py-10 my-auto white:">
-    <div class="lg:w-[80%] md:w-[90%] xs:w-[96%] mx-auto flex gap-4">
-        <div
-            class="lg:w-[88%] md:w-[80%] sm:w-[88%] xs:w-full mx-auto shadow-2xl p-4 rounded-xl h-fit self-center dark:bg-gray-800/40">
-            <!--  -->
-            <div class="">
-                <h1
-                    class="lg:text-3xl md:text-2xl sm:text-xl xs:text-xl font-serif font-extrabold mb-2 dark:text-white">
-                    Profile
-                </h1>
-                <h2 class="text-grey text-sm mb-4 dark:text-gray-400">Create Profile</h2>
-                <form>
-                    <!-- Cover Image -->
-                    <div
-                        class="w-full rounded-sm bg-[url('https://images.unsplash.com/photo-1449844908441-8829872d2607?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw2fHxob21lfGVufDB8MHx8fDE3MTA0MDE1NDZ8MA&ixlib=rb-4.0.3&q=80&w=1080')] bg-cover bg-center bg-no-repeat items-center">
-                        <!-- Profile Image -->
-                        <div
-                            class="mx-auto flex justify-center w-[141px] h-[141px] bg-blue-300/20 rounded-full bg-[url('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw4fHxwcm9maWxlfGVufDB8MHx8fDE3MTEwMDM0MjN8MA&ixlib=rb-4.0.3&q=80&w=1080')] bg-cover bg-center bg-no-repeat">
-
-                            <div class="bg-white/90 rounded-full w-6 h-6 text-center ml-28 mt-4">
-
-                                <input type="file" name="profile" id="upload_profile" hidden required>
-
-                                <label for="upload_profile">
-                                        <svg data-slot="icon" class="w-6 h-5 text-blue-700" fill="none"
-                                            stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24"
-                                            xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316Z">
-                                            </path>
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M16.5 12.75a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0ZM18.75 10.5h.008v.008h-.008V10.5Z">
-                                            </path>
-                                        </svg>
-                                    </label>
-                            </div>
-                        </div>
-                        <div class="flex justify-end">
-                            <!--  -->
-                            <input type="file" name="profile" id="upload_cover" hidden required>
-
-                            <div
-                                class="bg-white flex items-center gap-1 rounded-tl-md px-2 text-center font-semibold">
-                                <label for="upload_cover" class="inline-flex items-center gap-1 cursor-pointer">Cover
-                                    
-                                <svg data-slot="icon" class="w-6 h-5 text-blue-700" fill="none" stroke-width="1.5"
-                                    stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-                                    aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316Z">
-                                    </path>
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M16.5 12.75a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0ZM18.75 10.5h.008v.008h-.008V10.5Z">
-                                    </path>
-                                </svg>
-                                </label>
-                            </div>
-
-                        </div>
-                    </div>
-                    <h2 class="text-center mt-1 font-semibold dark:text-gray-300">Upload Profile and Cover Image
-                    </h2>
-                    <div class="flex lg:flex-row md:flex-col sm:flex-col xs:flex-col gap-2 justify-center w-full">
-                        <div class="w-full  mb-4 mt-6">
-                            <label for="" class="mb-2 dark:text-gray-300">First Name</label>
-                            <input type="text"
-                                    class="mt-2 p-4 w-full border-2 rounded-lg dark:text-gray-200 dark:border-gray-600 dark:bg-gray-800"
-                                    placeholder="First Name">
-                        </div>
-                        <div class="w-full  mb-4 lg:mt-6">
-                            <label for="" class=" dark:text-gray-300">Last Name</label>
-                            <input type="text"
-                                    class="mt-2 p-4 w-full border-2 rounded-lg dark:text-gray-200 dark:border-gray-600 dark:bg-gray-800"
-                                    placeholder="Last Name">
-                        </div>
-                    </div>
-
-                    <div class="flex lg:flex-row md:flex-col sm:flex-col xs:flex-col gap-2 justify-center w-full">
-                        <div class="w-full">
-                            <h3 class="dark:text-gray-300 mb-2">Sex</h3>
-                            <select
-                                    class="w-full text-grey border-2 rounded-lg p-4 pl-2 pr-2 dark:text-gray-200 dark:border-gray-600 dark:bg-gray-800">
-                                    <option disabled value="">Select Sex</option>
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                </select>
-                        </div>
-                        <div class="w-full">
-                            <h3 class="dark:text-gray-300 mb-2">Date Of Birth</h3>
-                            <input type="date"
-                                    class="text-grey p-4 w-full border-2 rounded-lg dark:text-gray-200 dark:border-gray-600 dark:bg-gray-800">
-                        </div>
-                    </div>
-                    <div class="w-full rounded-lg bg-blue-500 mt-4 text-white text-lg font-semibold">
-                        <button type="submit" class="w-full p-4">Submit</button>
-                    </div>
-                </form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-r from-indigo-800 to-blue-900 min-h-screen flex flex-col justify-between">
+    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-2xl max-w-4xl w-full p-8 transition-all duration-300 animate-fade-in">
+        <div class="flex flex-col md:flex-row">
+            <div class="md:w-1/3 text-center mb-8 md:mb-0">
+                <img src="https://i.pravatar.cc/300" alt="Profile Picture" class="rounded-full w-48 h-48 mx-auto mb-4 border-4 border-indigo-800 dark:border-blue-900 transition-transform duration-300 hover:scale-105">
+                <h1 class="text-2xl font-bold text-indigo-800 dark:text-white mb-2">John Doe</h1>
+                <p class="text-gray-600 dark:text-gray-300">Software Developer</p>
+                <a href="/profileedit">Edit</a>
+            </div>
+            <div class="md:w-2/3 md:pl-8">
+                <h2 class="text-xl font-semibold text-indigo-800 dark:text-white mb-4">About Me</h2>
+                <p class="text-gray-700 dark:text-gray-300 mb-6">
+                    Passionate software developer with 5 years of experience in web technologies. 
+                    I love creating user-friendly applications and solving complex problems.
+                </p>
+                <h2 class="text-xl font-semibold text-indigo-800 dark:text-white mb-4">Skills</h2>
+                <div class="flex flex-wrap gap-2 mb-6">
+                    <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">JavaScript</span>
+                    <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">React</span>
+                    <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Node.js</span>
+                    <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Python</span>
+                    <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">SQL</span>
+                </div>
+                <h2 class="text-xl font-semibold text-indigo-800 dark:text-white mb-4">Contact Information</h2>
+                <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+                    <li class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-indigo-800 dark:text-blue-900" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                        </svg>
+                        john.doe@example.com
+                    </li>
+                    <li class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-indigo-800 dark:text-blue-900" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                        </svg>
+                        +1 (555) 123-4567
+                    </li>
+                    <li class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-indigo-800 dark:text-blue-900" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                        </svg>
+                        San Francisco, CA
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
-</section>
+
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+    </style>
+
+    <script>
+        // Toggle dark mode based on system preference
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+
+        // Add hover effect to skill tags
+        const skillTags = document.querySelectorAll('.bg-indigo-100');
+        skillTags.forEach(tag => {
+            tag.addEventListener('mouseover', () => {
+                tag.classList.remove('bg-indigo-100', 'text-indigo-800');
+                tag.classList.add('bg-blue-900', 'text-white');
+            });
+            tag.addEventListener('mouseout', () => {
+                tag.classList.remove('bg-blue-900', 'text-white');
+                tag.classList.add('bg-indigo-100', 'text-indigo-800');
+            });
+        });
+    </script>
+</body>
+</html>
 @endsection

@@ -6,6 +6,7 @@
   body {background:white !important;}
 </style>
 <form action="/upload-photo" method="post">
+    @csrf
   <div class="editor mx-auto w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl">
     <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none" spellcheck="false" placeholder="Title" type="text">
     <textarea name="description" id="descriptionField" 

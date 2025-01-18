@@ -1,85 +1,163 @@
-<div class="bg-gray-100 h-screen flex items-center justify-center">
-    <div class="bg-white p-8 rounded-lg shadow-md max-w-md">
-        <!-- User Info with Three-Dot Menu -->
-        <div class="flex items-center justify-between mb-4">
-            <div class="flex items-center space-x-2">
-                <img src="https://placekitten.com/40/40" alt="User Avatar" class="w-8 h-8 rounded-full">
-                <div>
-                    <p class="text-gray-800 font-semibold">John Doe</p>
-                    <p class="text-gray-500 text-sm">Posted 2 hours ago</p>
-                </div>
-            </div>
-            <div class="text-gray-500 cursor-pointer">
-                <!-- Three-dot menu icon -->
-                <button class="hover:bg-gray-50 rounded-full p-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="7" r="1" />
-                        <circle cx="12" cy="12" r="1" />
-                        <circle cx="12" cy="17" r="1" />
-                    </svg>
-                </button>
-            </div>
+<article class="mb-4 break-inside rounded-xl bg-white dark:bg-slate-800 flex flex-col bg-clip-border">
+    <div class="flex p-6 items-center justify-between">
+      <div class="flex">
+        <a class="inline-block mr-4" href="#">
+          <img class="rounded-full max-w-none w-14 h-14" src="https://randomuser.me/api/portraits/women/67.jpg" />
+        </a>
+        <div class="flex flex-col">
+          <div class="flex items-center">
+            <a class="inline-block text-lg font-bold mr-2" href="#">Marylin B. Bechtol</a>
+            <span class="text-slate-500 dark:text-slate-300">3 minutes ago</span>
+          </div>
+          <div class="text-slate-500 dark:text-slate-300">
+            Marketing Coordinator
+          </div>
         </div>
-        <!-- Message -->
-        <div class="mb-4">
-            <p class="text-gray-800">Just another day with adorable kittens! 🐱 <a href="" class="text-blue-600">#CuteKitten</a>
-                <a href="" class="text-blue-600">#AdventureCat</a>
-            </p>
-        </div>
-        <!-- Image -->
-        <div class="mb-4">
-            <img src="https://placekitten.com/400/300" alt="Post Image" class="w-full h-48 object-cover rounded-md">
-        </div>
-        <!-- Like and Comment Section -->
-        <div class="flex items-center justify-between text-gray-500">
-            <div class="flex items-center space-x-2">
-                <button class="flex justify-center items-center gap-2 px-2 hover:bg-gray-50 rounded-full p-1">
-                    <svg class="w-5 h-5 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M12 21.35l-1.45-1.32C6.11 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-4.11 6.86-8.55 11.54L12 21.35z" />
-                    </svg>
-                    <span>42 Likes</span>
-                </button>
-            </div>
-            <button class="flex justify-center items-center gap-2 px-2 hover:bg-gray-50 rounded-full p-1">
-                <svg width="22px" height="22px" viewBox="0 0 24 24" class="w-5 h-5 fill-current" xmlns="http://www.w3.org/2000/svg">
-                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                    <g id="SVGRepo_iconCarrier">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 13.5997 2.37562 15.1116 3.04346 16.4525C3.22094 16.8088 3.28001 17.2161 3.17712 17.6006L2.58151 19.8267C2.32295 20.793 3.20701 21.677 4.17335 21.4185L6.39939 20.8229C6.78393 20.72 7.19121 20.7791 7.54753 20.9565C8.88837 21.6244 10.4003 22 12 22ZM8 13.25C7.58579 13.25 7.25 13.5858 7.25 14C7.25 14.4142 7.58579 14.75 8 14.75H13.5C13.9142 14.75 14.25 14.4142 14.25 14C14.25 13.5858 13.9142 13.25 13.5 13.25H8ZM7.25 10.5C7.25 10.0858 7.58579 9.75 8 9.75H16C16.4142 9.75 16.75 10.0858 16.75 10.5C16.75 10.9142 16.4142 11.25 16 11.25H8C7.58579 11.25 7.25 10.9142 7.25 10.5Z"></path>
-                    </g>
-                </svg>
-                <span>3 Comment</span>
-            </button>
-        </div>
-        <hr class="mt-2 mb-2">
-        <p class="text-gray-800 font-semibold">Comment</p>
-        <hr class="mt-2 mb-2">
-        <div class="mt-4">
-            <!-- Comment 1 -->
-            <div class="flex items-center space-x-2">
-                <img src="https://placekitten.com/32/32" alt="User Avatar" class="w-6 h-6 rounded-full">
-                <div>
-                    <p class="text-gray-800 font-semibold">Jane Smith</p>
-                    <p class="text-gray-500 text-sm">Lovely shot! 📸</p>
-                </div>
-            </div>
-            <!-- Comment 2 -->
-            <div class="flex items-center space-x-2 mt-2">
-                <img src="https://placekitten.com/32/32" alt="User Avatar" class="w-6 h-6 rounded-full">
-                <div>
-                    <p class="text-gray-800 font-semibold">Bob Johnson</p>
-                    <p class="text-gray-500 text-sm">I can't handle the cuteness! Where can I get one?</p>
-                </div>
-            </div>
-            <!-- Reply from John Doe with indentation -->
-            <div class="flex items-center space-x-2 mt-2 ml-6">
-                <img src="https://placekitten.com/40/40" alt="User Avatar" class="w-6 h-6 rounded-full">
-                <div>
-                    <p class="text-gray-800 font-semibold">John Doe</p>
-                    <p class="text-gray-500 text-sm">That little furball is from a local shelter. You should check it out! 🏠😺</p>
-                </div>
-            </div>
-            <!-- Add more comments and replies as needed -->
-        </div>
+      </div>
     </div>
+    <p class="pr-6 pl-6 pb-6">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmodelit sed do eiusmodelit sed do eiusmodelit sed do eiusmod
+      <a href="#" class="font-medium text-blue-700 dark:text-blue-500">#ui</a>
+      <a href="#" class="font-medium text-blue-700 dark:text-blue-500">#uxui</a>
+      <a href="#" class="font-medium text-blue-700 dark:text-blue-500">#userinterface</a>
+      <a href="#" class="font-medium text-blue-700 dark:text-blue-500">#webdeveloper</a>
+      <a href="#" class="font-medium text-blue-700 dark:text-blue-500">#card</a>
+    </p>
+    <div class="p-6 bg-yellow-500">
+      <h2 class="text-3xl font-extrabold text-black">
+        Web Design templates Selection
+      </h2>
+    </div>
+    <div class="p-6">
+      <div class="flex justify-between items-center">
+        <a class="inline-flex items-center" href="#">
+          <span class="-m-1 rounded-full border-2 border-white dark:border-slate-800">
+            <img class="w-6" src="https://cdn.iconscout.com/icon/free/png-256/like-2387659-1991059.png" />
+          </span>
+          <span class="-m-1 rounded-full border-2 border-white dark:border-slate-800">
+            <img class="w-6" src="https://cdn.iconscout.com/icon/free/png-256/angry-2387661-1991061.png" />
+          </span>
+          <span class="-m-1 rounded-full border-2 border-white dark:border-slate-800">
+            <img class="w-6" src="https://cdn.iconscout.com/icon/free/png-256/wow-2387663-1991062.png" />
+          </span>
+          <span class="text-lg font-bold ml-3">237</span>
+        </a>
+        <a class="ml-auto" href="#">23 comentarios</a>
+      </div>
+      <div class="mt-6 mb-6 h-px bg-slate-200"></div>
+      <div class="flex items-center justify-between mb-6">
+        <button class="py-2 px-4 font-medium hover:bg-slate-50 dark:hover:bg-slate-700 rounded-lg">
+          Me gusta
+        </button>
+        <button class="py-2 px-4 font-medium hover:bg-slate-50 dark:hover:bg-slate-700 rounded-lg">
+          Comentar
+        </button>
+        <button class="py-2 px-4 font-medium hover:bg-slate-50 dark:hover:bg-slate-700 rounded-lg">
+          Compartir
+        </button>
+      </div>
+      <div class="relative">
+        <input
+          class="pt-2 pb-2 pl-3 w-full h-11 bg-slate-100 dark:bg-slate-600 rounded-lg placeholder:text-slate-600 dark:placeholder:text-slate-300 font-medium pr-20"
+          type="text" placeholder="Write a comment" />
+        <span class="flex absolute right-3 top-2/4 -mt-3 items-center">
+          <svg class="mr-2" style="width: 26px; height: 26px;" viewBox="0 0 24 24">
+            <path fill="currentColor"
+              d="M20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12M22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12M10,9.5C10,10.3 9.3,11 8.5,11C7.7,11 7,10.3 7,9.5C7,8.7 7.7,8 8.5,8C9.3,8 10,8.7 10,9.5M17,9.5C17,10.3 16.3,11 15.5,11C14.7,11 14,10.3 14,9.5C14,8.7 14.7,8 15.5,8C16.3,8 17,8.7 17,9.5M12,17.23C10.25,17.23 8.71,16.5 7.81,15.42L9.23,14C9.68,14.72 10.75,15.23 12,15.23C13.25,15.23 14.32,14.72 14.77,14L16.19,15.42C15.29,16.5 13.75,17.23 12,17.23Z">
+            </path>
+          </svg>
+          <svg class="fill-blue-500 dark:fill-slate-50" style="width: 24px; height: 24px;" viewBox="0 0 24 24">
+            <path d="M2,21L23,12L2,3V10L17,12L2,14V21Z"></path>
+          </svg>
+        </span>
+      </div>
+    </div>
+  </article>
+
 </div>
+</div>
+
+
+<article class="mb-4 break-inside rounded-xl bg-white dark:bg-slate-800 flex flex-col bg-clip-border">
+    <div class="flex p-6 items-center justify-between">
+      <div class="flex">
+        <a class="inline-block mr-4" href="#">
+          <img class="rounded-full max-w-none w-14 h-14" src="https://randomuser.me/api/portraits/women/67.jpg" />
+        </a>
+        <div class="flex flex-col">
+          <div class="flex items-center">
+            <a class="inline-block text-lg font-bold mr-2" href="#">Marylin B. Bechtol</a>
+            <span class="text-slate-500 dark:text-slate-300">3 minutes ago</span>
+          </div>
+          <div class="text-slate-500 dark:text-slate-300">
+            Marketing Coordinator
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="pr-6 pl-6 pb-6">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmodelit sed do eiusmodelit sed do eiusmodelit sed do eiusmod
+      <a href="#" class="font-medium text-blue-700 dark:text-blue-500">#ui</a>
+      <a href="#" class="font-medium text-blue-700 dark:text-blue-500">#uxui</a>
+      <a href="#" class="font-medium text-blue-700 dark:text-blue-500">#userinterface</a>
+      <a href="#" class="font-medium text-blue-700 dark:text-blue-500">#webdeveloper</a>
+      <a href="#" class="font-medium text-blue-700 dark:text-blue-500">#card</a>
+    </p>
+    <div class="p-6 bg-yellow-500">
+      <h2 class="text-3xl font-extrabold text-black">
+        Web Design templates Selection
+      </h2>
+    </div>
+    <div class="p-6">
+      <div class="flex justify-between items-center">
+        <a class="inline-flex items-center" href="#">
+          <span class="-m-1 rounded-full border-2 border-white dark:border-slate-800">
+            <img class="w-6" src="https://cdn.iconscout.com/icon/free/png-256/like-2387659-1991059.png" />
+          </span>
+          <span class="-m-1 rounded-full border-2 border-white dark:border-slate-800">
+            <img class="w-6" src="https://cdn.iconscout.com/icon/free/png-256/angry-2387661-1991061.png" />
+          </span>
+          <span class="-m-1 rounded-full border-2 border-white dark:border-slate-800">
+            <img class="w-6" src="https://cdn.iconscout.com/icon/free/png-256/wow-2387663-1991062.png" />
+          </span>
+          <span class="text-lg font-bold ml-3">237</span>
+        </a>
+        <a class="ml-auto" href="#">23 comentarios</a>
+      </div>
+      <div class="mt-6 mb-6 h-px bg-slate-200"></div>
+      <div class="flex items-center justify-between mb-6">
+        <button class="py-2 px-4 font-medium hover:bg-slate-50 dark:hover:bg-slate-700 rounded-lg">
+          Me gusta
+        </button>
+        <button class="py-2 px-4 font-medium hover:bg-slate-50 dark:hover:bg-slate-700 rounded-lg">
+          Comentar
+        </button>
+        <button class="py-2 px-4 font-medium hover:bg-slate-50 dark:hover:bg-slate-700 rounded-lg">
+          Compartir
+        </button>
+      </div>
+      <div class="relative">
+        <input
+          class="pt-2 pb-2 pl-3 w-full h-11 bg-slate-100 dark:bg-slate-600 rounded-lg placeholder:text-slate-600 dark:placeholder:text-slate-300 font-medium pr-20"
+          type="text" placeholder="Write a comment" />
+        <span class="flex absolute right-3 top-2/4 -mt-3 items-center">
+          <svg class="mr-2" style="width: 26px; height: 26px;" viewBox="0 0 24 24">
+            <path fill="currentColor"
+              d="M20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12M22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12M10,9.5C10,10.3 9.3,11 8.5,11C7.7,11 7,10.3 7,9.5C7,8.7 7.7,8 8.5,8C9.3,8 10,8.7 10,9.5M17,9.5C17,10.3 16.3,11 15.5,11C14.7,11 14,10.3 14,9.5C14,8.7 14.7,8 15.5,8C16.3,8 17,8.7 17,9.5M12,17.23C10.25,17.23 8.71,16.5 7.81,15.42L9.23,14C9.68,14.72 10.75,15.23 12,15.23C13.25,15.23 14.32,14.72 14.77,14L16.19,15.42C15.29,16.5 13.75,17.23 12,17.23Z">
+            </path>
+          </svg>
+          <svg class="fill-blue-500 dark:fill-slate-50" style="width: 24px; height: 24px;" viewBox="0 0 24 24">
+            <path d="M2,21L23,12L2,3V10L17,12L2,14V21Z"></path>
+          </svg>
+        </span>
+      </div>
+    </div>
+  </article>
+
+</div>
+</div>
+
+
+
+<script src="assets/js/script.js"></script>
+<script src="assets/js/script.js"></script>

@@ -22,10 +22,15 @@ Route::get('/post', function () {
 Route::get('/profile', function () {
     return view('pages.profile');
 });
+Route::get('/profileedit', function () {
+    return view('pages.profileedit');
+});
 Route::get('/home', function () {
     return view('pages.home');
 });
-Route::post('/upload-photo', [PostController::class, 'store'])->name('upload.photo');
+Route::post('/upload-photo', [PostController::class, 'uploadPhoto'])->name('upload.photo');
+Route::post('/posts/store', [PostController::class, 'store'])->name('posts.store');
+
 
 
 
