@@ -9,7 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gradient-to-r from-indigo-800 to-blue-900 min-h-screen flex flex-col justify-between">
-    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-2xl max-w-4xl w-full p-8 transition-all duration-300 animate-fade-in">
+    <div class="bg-white mx-auto dark:bg-gray-800 rounded-xl shadow-2xl max-w-4xl w-full p-8 transition-all duration-300 animate-fade-in">
         <div class="flex flex-col md:flex-row">
             <div class="md:w-1/3 text-center mb-8 md:mb-0">
                 <img src="https://i.pravatar.cc/300" alt="Profile Picture" class="rounded-full w-48 h-48 mx-auto mb-4 border-4 border-indigo-800 dark:border-blue-900 transition-transform duration-300 hover:scale-105">
@@ -20,7 +20,7 @@
             <div class="md:w-2/3 md:pl-8">
                 <h2 class="text-xl font-semibold text-indigo-800 dark:text-white mb-4">About Me</h2>
                 <p class="text-gray-700 dark:text-gray-300 mb-6">
-                    Passionate software developer with 5 years of experience in web technologies. 
+                    Passionate software developer with 5 years of experience in web technologies.
                     I love creating user-friendly applications and solving complex problems.
                 </p>
                 <h2 class="text-xl font-semibold text-indigo-800 dark:text-white mb-4">Skills</h2>

@@ -1,4 +1,4 @@
-<article class="mb-4 break-inside rounded-xl bg-white dark:bg-slate-800 flex flex-col bg-clip-border">
+<article class="mx-auto max-md:mx-2.5 max-w-[600px] my-4 break-inside rounded-xl bg-white dark:bg-slate-800 flex flex-col bg-clip-border">
     <div class="flex p-6 items-center justify-between">
       <div class="flex">
         <a class="inline-block mr-4" href="#">
@@ -78,7 +78,7 @@
 </div>
 
 
-<article class="mb-4 break-inside rounded-xl bg-white dark:bg-slate-800 flex flex-col bg-clip-border">
+<article class="mx-auto max-md:mx-2.5 max-w-[600px] mb-4 break-inside rounded-xl bg-white dark:bg-slate-800 flex flex-col bg-clip-border">
     <div class="flex p-6 items-center justify-between">
       <div class="flex">
         <a class="inline-block mr-4" href="#">

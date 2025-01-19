@@ -39,35 +39,19 @@ class PostController extends Controller
         if (!$user) {
             return response()->json(['error' => 'User not authenticated.'], 401);
         }
-
         $imageName1 = time() . '.' . $request->photo->extension();
         $request->photo->move(public_path('uploaded'), $imageName1);
-
         $post = new Post();
         $category = Category::firstOrCreate(
             ['name' => $request->title],
         );
-
-        $post->content = 'images/' . $imageName1;
+        $post->content = 'uploaded/' . $imageName1;
         $post->categoryid = $category->id;
         $post->userid = $user->id;
         $post->description = $request->description;
         $post->save();
 
-        return response()->json(['success' => 'Post created successfully!']);
-    }
-    public function uploadPhoto(Request $request)
-    {
-        // Validate the request
-        $request->validate([
-            'photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
-
-        // Store the photo in the 'uploads' directory within 'public/storage'
-        $photoPath = $request->file('photo')->store('uploads', 'public');
-
-        // Return the file path as a JSON response
-        return response()->json(['photoPath' => asset('storage/' . $photoPath)]);
+        return redirect('/post' , ['success' => 'post created successfully']);
     }
 
 }

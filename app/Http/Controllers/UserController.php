@@ -14,9 +14,13 @@ class UserController extends Controller
         $users = User::all();
         return $users;
     }
-    public function create(Request $request){
-        $user = User::create($request->all());
-        return "user added successfully";
+    public function create(Request $request) {
+        try {
+            $user = User::create($request->all());
+            return redirect('/')->with('success', 'User created successfully!');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => 'User creation failed. Please try again.']);
+        }
     }
     public function update(Request $request, $id){
         $user = User::findOrFail($id);
@@ -40,10 +44,10 @@ class UserController extends Controller
                 Auth::login($user);
                 return redirect('/home');
             } else {
-                return response()->json(['error' => 'Invalid password'], 401);
+                return redirect()->back()->withErrors(['error' => 'Invalid password']);
             }
         } catch (ModelNotFoundException $e) {
-            return response()->json(['error' => 'User not found'], 404);
+            return redirect()->back()->withErrors(['error' => 'User not found']);
         }
     }
 }

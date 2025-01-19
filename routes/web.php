@@ -37,7 +37,10 @@ Route::post('/posts/store', [PostController::class, 'store'])->name('posts.store
 
 Route::post('/login', [UserController::class,'login'] )->name('login');
 Route::get('/users',[UserController::class,'getAllUsers']);
+
+
 Route::post('/create-user',[UserController::class,'create']);
+
 Route::post('/update-user/{id}',[UserController::class,'update']);
 Route::delete('/delete-user/{id}',[UserController::class,'delete']);
 Route::get('/show-user/{id}',[UserController::class,'show']);
