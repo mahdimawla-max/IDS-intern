@@ -12,11 +12,7 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->validateCsrfTokens(except:[
-            // '/create-user',
-            // '/update-user/*',
-            // '/delete-user/*',
-            // '/post-categories',
-            '/*',
+
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

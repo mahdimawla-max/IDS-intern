@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Category;
 use App\Models\User;
-use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -34,28 +34,28 @@ class PostController extends Controller
     }
     public function store(Request $request)
     {
-        $request->validate([
+        $user = Auth::user();
 
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
-            'photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-         
-        ]);
+        if (!$user) {
+            return response()->json(['error' => 'User not authenticated.'], 401);
+        }
+
         $imageName1 = time() . '.' . $request->photo->extension();
-        $request->photo->move(public_path('images'), $imageName1);
-        $post=new Post();
-        $category = new Category();
-        $category->title = $request->title;
-        $user=Auth::user();
-        $post->content ='images/' . $imageName1;
-        $post->category_id = $category->id;
-        $post->user_id = $user->id;
+        $request->photo->move(public_path('uploaded'), $imageName1);
+
+        $post = new Post();
+        $category = Category::firstOrCreate(
+            ['name' => $request->title],
+        );
+
+        $post->content = 'images/' . $imageName1;
+        $post->categoryid = $category->id;
+        $post->userid = $user->id;
         $post->description = $request->description;
         $post->save();
-        
-        return back()->with('success', 'Post created successfully!');
-    }
 
+        return response()->json(['success' => 'Post created successfully!']);
+    }
     public function uploadPhoto(Request $request)
     {
         // Validate the request
