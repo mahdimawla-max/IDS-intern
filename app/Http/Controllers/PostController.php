@@ -53,6 +53,27 @@ class PostController extends Controller
 
         return redirect('/post' , ['success' => 'post created successfully']);
     }
+    public function search(Request $request)
+    {
+        $query = $request->input('query'); // The search term
+        $categoryId = $request->input('category_id'); // The selected category
+
+        // Build the query to filter posts by category and search term
+        $posts = Post::query()
+            ->when($categoryId, function ($queryBuilder) use ($categoryId) {
+                return $queryBuilder->where('category_id', $categoryId);
+            })
+            ->where(function ($queryBuilder) use ($query) {
+                return $queryBuilder->where('title', 'like', '%' . $query . '%')
+                                     ->orWhere('content', 'like', '%' . $query . '%');
+            })
+            ->get();
+
+        $categories = Category::all(); // Get categories for the dropdown
+
+        return view('search.results', compact('posts', 'categories'));
+    }
+    
 
 }
 

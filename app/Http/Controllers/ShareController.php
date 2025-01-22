@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Share;
 use App\Models\User;
+
 use Illuminate\Http\Request;
 
 class ShareController extends Controller
@@ -48,4 +49,5 @@ class ShareController extends Controller
         $userShares = $user->shares;
         return $userShares;
     }
+ 
 }

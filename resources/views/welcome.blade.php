@@ -7,9 +7,9 @@
     @vite('resources/css/app.css')
     <title>Document</title>
 </head>
-<!-- component -->
+
 <header class="2xl:container 2xl:mx-auto">
-    <!--- more free and premium Tailwind CSS components at https://tailwinduikit.com/ --->
+    
     <div class="bg-white rounded shadow-lg py-5 px-7">
         <nav class="flex justify-between">
             <ul class="hidden md:flex flex-auto space-x-2">
@@ -19,14 +19,20 @@
                 <li onclick="selected()" class="text-white bg-indigo-600 px-3 py-2.5 rounded"><a href="{{ route('post') }}">Create Post</a>
                 </li>
             </ul>
-            <x-search_card>
-            </x-search_card>
+
+
+            @if (Request::is('home'))
+            <x-search_card :categories="$categories" />
+            @endif
+        
+             
+         
         
             <div>
                 <a href=""><img class="w-[60px]" src="/images/user.svg" alt=""></a>
             </div>
         </nav>
-        <!-- for smaller devcies -->
+        
 
         <div class="block md:hidden w-full mt-5 ">
             <div onclick="selectNew()"

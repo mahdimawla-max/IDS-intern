@@ -6,6 +6,7 @@ use App\Http\Controllers\ReactionController;
 use App\Http\Controllers\ShareController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Sanctum\HasApiTokens;
 
@@ -27,9 +28,12 @@ Route::get('/profileedit', function () {
 });
 Route::get('/home', function () {
     return view('pages.home');
-});
+})->name('home');
 Route::post('/upload-photo', [PostController::class, 'uploadPhoto'])->name('upload.photo');
 Route::post('/posts/store', [PostController::class, 'store'])->name('posts.store');
+Route::get('/home', [SearchController::class, 'showSearchPage']);
+Route::get('/search', [PostController::class, 'search'])->name('search');
+
 
 
 

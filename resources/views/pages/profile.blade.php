@@ -66,14 +66,16 @@
             animation: fadeIn 0.5s ease-out forwards;
         }
     </style>
+       <x-post_card>
+    </x-post_card>
+
 
     <script>
-        // Toggle dark mode based on system preference
+        
         if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
             document.documentElement.classList.add('dark');
         }
 
-        // Add hover effect to skill tags
         const skillTags = document.querySelectorAll('.bg-indigo-100');
         skillTags.forEach(tag => {
             tag.addEventListener('mouseover', () => {
