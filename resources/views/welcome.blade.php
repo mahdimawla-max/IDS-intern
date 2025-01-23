@@ -7,32 +7,54 @@
     @vite('resources/css/app.css')
     <title>Document</title>
 </head>
+<script>
+    function toggleElementById(Id) {
+        const dropDown = document.getElementById(Id);
+        dropDown.classList.toggle('opacity-0');
+        dropDown.classList.toggle('pointer-events-none');
+    }
 
+    function handleClickAway(event) {
+        const element = document.getElementById('dropdown-open')
+        const dropDown = document.getElementById('categories-dropdown');
+        if (!element.contains(event.target) && !dropDown.contains(event.target)) {
+            dropDown.classList.add('opacity-0');
+            dropDown.classList.add('pointer-events-none');
+        }
+    }
+
+    document.addEventListener('click', handleClickAway)
+</script>
 <header class="2xl:container 2xl:mx-auto">
-    
+
     <div class="bg-white rounded shadow-lg py-5 px-7">
         <nav class="flex justify-between">
-            <ul class="hidden md:flex flex-auto space-x-2">
-                <li onclick="selected()" class="text-white bg-indigo-600 px-3 py-2.5 rounded"><a href="/home">Home</a></li>
-                <li onclick="selected()" class="text-white bg-indigo-600 px-3 py-2.5 rounded"><a href="/profile">Profile</a>
+            <ul class="hidden md:flex flex-auto space-x-2 items-center">
+                <li onclick="selected()" class="text-white h-fit bg-indigo-600 px-3 py-2.5 rounded"><a
+                        class="block w-full" href="/home">Home</a></li>
+                <li onclick="selected()" class="text-white h-fit bg-indigo-600 px-3 py-2.5 rounded"><a
+                        class="block w-full" href="/profile">Profile</a>
                 </li>
-                <li onclick="selected()" class="text-white bg-indigo-600 px-3 py-2.5 rounded"><a href="{{ route('post') }}">Create Post</a>
+                <li onclick="selected()" class="text-white h-fit bg-indigo-600 px-3 py-2.5 rounded"><a
+                        class="block w-max" href="{{ route('post') }}">Create Post</a>
                 </li>
             </ul>
 
 
             @if (Request::is('home'))
-            <x-search_card :categories="$categories" />
+                <x-search_card :categories="$categories"/>
             @endif
-        
-             
-         
-        
-            <div>
-                <a href=""><img class="w-[60px]" src="/images/user.svg" alt=""></a>
-            </div>
+
+
+
+
+            {{--            <div>--}}
+            {{--                <a href=""><img class="w-[60px]" src="/images/user.svg" alt=""></a>--}}
+            {{--            </div>--}}
         </nav>
-        
+        {{--    <?php--}}
+        {{--        dd($posts)--}}
+        {{--    ?>--}}
 
         <div class="block md:hidden w-full mt-5 ">
             <div onclick="selectNew()"
@@ -64,35 +86,7 @@
 </header>
 @yield('content')
 </body>
-<script>function selected() {
-        var targeted = event.target;
-        var clicked = targeted.parentElement;
-
-        var child = clicked.children;
-        console.log(child);
-
-        for (let i = 0; i < child.length; i++) {
-            if (child[i].classList.contains("text-white")) {
-                console.log(child[i]);
-                child[i].classList.remove("text-white", "bg-indigo-600");
-                child[i].classList.add(
-                    "text-gray-600",
-                    "bg-gray-50",
-                    "border",
-                    "border-white"
-                );
-            }
-        }
-
-        targeted.classList.remove(
-            "text-gray-600",
-            "bg-gray-50",
-            "border",
-            "border-white"
-        );
-        targeted.classList.add("text-white", "bg-indigo-600");
-    }
-
+<script>
     function selectNew() {
         var newL = document.getElementById("list");
         newL.classList.toggle("hidden");
@@ -110,6 +104,7 @@
 
         document.getElementById("s1").classList.remove("hidden");
     }
+
 </script>
 
 </html>
