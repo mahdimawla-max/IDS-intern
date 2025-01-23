@@ -41,7 +41,7 @@
             </ul>
 
 
-            @if (Request::is('home'))
+            @if (Request::is('home/*') || Request::is('home'))
                 <x-search_card :categories="$categories"/>
             @endif
 
