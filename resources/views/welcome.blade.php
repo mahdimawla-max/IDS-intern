@@ -8,6 +8,21 @@
     <title>Document</title>
 </head>
 <script>
+    function toggleToLike(icon, numberOfLikesE) {
+        const likeBtn = document.querySelector('#' + icon);
+        const numberOfLikesElement = document.querySelector('#' + numberOfLikesE);
+        let numberOfLikes = Number.parseInt(numberOfLikesElement.textContent, 10);
+        if (!likeBtn.classList.contains('isLiked')) {
+            likeBtn.classList.add('isLiked');
+            numberOfLikes++;
+            numberOfLikesElement.textContent = numberOfLikes;
+        } else {
+            likeBtn.classList.remove('isLiked');
+            numberOfLikes--;
+            numberOfLikesElement.textContent = numberOfLikes;
+        }
+    }
+
     function toggleElementById(Id) {
         const dropDown = document.getElementById(Id);
         dropDown.classList.toggle('opacity-0');
@@ -17,9 +32,11 @@
     function handleClickAway(event) {
         const element = document.getElementById('dropdown-open')
         const dropDown = document.getElementById('categories-dropdown');
-        if (!element.contains(event.target) && !dropDown.contains(event.target)) {
-            dropDown.classList.add('opacity-0');
-            dropDown.classList.add('pointer-events-none');
+        if (element) {
+            if (!element.contains(event.target) && !dropDown.contains(event.target)) {
+                dropDown.classList.add('opacity-0');
+                dropDown.classList.add('pointer-events-none');
+            }
         }
     }
 

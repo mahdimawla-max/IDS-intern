@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,8 +26,15 @@ class UserController extends Controller
     }
     public function update(Request $request, $id){
         $user = User::findOrFail($id);
-        $user->update($request->all());
-        return "user update successfully";
+        $imageName1 = time() . '.' . $request->profilepicture->extension();
+        $request->profilepicture->move(public_path('uploaded'), $imageName1);
+        $user->profilepicture = 'uploaded/' . $imageName1;
+        $user->fullname = $request->fullname;
+        $user->location = $request->location;
+        $user->about = $request->about;
+        $user->birthdate = $request->birthdate;
+        $user->save();
+        return redirect('/profile');
 }
     public function delete($id){
         $user = User::findOrFail($id);

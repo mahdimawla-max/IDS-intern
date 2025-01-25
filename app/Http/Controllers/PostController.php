@@ -23,7 +23,7 @@ class PostController extends Controller
         $post->update($request->all());
         return"post updated";
     }
-    public function delete($request, $id){
+    public function delete( $id){
         $post = Post::findOrFail($id);
         $post->delete();
         return "post deleted";
@@ -51,7 +51,7 @@ class PostController extends Controller
         $post->description = $request->description;
         $post->save();
 
-        return redirect('/post' , ['success' => 'post created successfully']);
+        return redirect('/post');
     }
     public function search(Request $request)
     {
@@ -73,7 +73,7 @@ class PostController extends Controller
 
         return view('search.results', compact('posts', 'categories'));
     }
-    
+
 
 }
 

@@ -9,26 +9,22 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Sanctum\HasApiTokens;
+use \App\Http\Controllers\PageController;
 
-
-Route::get('/', function () {
-    return view('pages.login');
-});
-Route::get('/register', function () {
-    return view('pages.register');
-});
+Route::get('/',[PageController::class , 'getLoginPage']);
+Route::get('/register', [PageController::class , 'getSignInPage']);
 Route::get('/post', function () {
     return view('pages.post');
 })->name('post');
-Route::get('/profile', function () {
-    return view('pages.profile');
-});
-Route::get('/profileedit', function () {
-    return view('pages.profileedit');
-});
+
+Route::get('/profile', [PageController::class , 'getProfilePage']);
+
+
+Route::get('/profileedit', [PageController::class , 'getEditProfile']);
+
 Route::post('/upload-photo', [PostController::class, 'uploadPhoto'])->name('upload.photo');
 Route::post('/posts/store', [PostController::class, 'store'])->name('posts.store');
-Route::get('/home/{catId?}', [SearchController::class, 'showSearchPage']);
+Route::get('/home/{catId?}', [PageController::class, 'showSearchPage']);
 Route::get('/search', [PostController::class, 'search'])->name('search');
 
 
@@ -39,6 +35,7 @@ Route::get('/users', [UserController::class, 'getAllUsers']);
 Route::post('/create-user', [UserController::class, 'create']);
 
 Route::post('/update-user/{id}', [UserController::class, 'update']);
+
 Route::delete('/delete-user/{id}', [UserController::class, 'delete']);
 Route::get('/show-user/{id}', [UserController::class, 'show']);
 Route::get('/categories', [CategoryController::class, 'getAllCategories']);
@@ -49,8 +46,13 @@ Route::get('/show-categories/{id}', [CategoryController::class, 'show']);
 Route::get('/posts', [PostController::class, 'getAllPosts']);
 Route::post('/create-post', [PostController::class, 'create']);
 Route::post('/update-post/{id}', [PostController::class, 'update']);
-Route::delete('/delete-post/{id}', [PostController::class, 'delete']);
+
+Route::post('/delete-post/{id}', [PostController::class, 'delete']);
+
+
+
 Route::get('/show-post/{id}', [PostController::class, 'show']);
+
 Route::get('/comments', [CommentController::class, 'getAllComments']);
 Route::post('/create-comment', [CommentController::class, 'create']);
 Route::post('/update-commment/{id}', [CommentController::class, 'update']);
