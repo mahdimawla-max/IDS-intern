@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Category;
+use App\Models\Reaction;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -73,7 +74,20 @@ class PostController extends Controller
 
         return view('search.results', compact('posts', 'categories'));
     }
+    public function react(Request $request, Post $post)
+    {
+        $user = Auth::user();
+        $userId = $user->id;
+        $reaction = Reaction::where('userid', $userId)->where('postid', $post->id)->first();
+        if ($reaction) {
+            $reaction->delete();
+            return response()->json(['success' => 'unliked']);
+        } else {
+            Reaction::create(['status'=>'like','userid' => $userId, 'postid' => $post->id]);
+            return response()->json(['success' => 'liked']);
+        }
 
+    }
 
 }
 

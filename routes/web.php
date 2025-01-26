@@ -70,3 +70,5 @@ Route::delete('/delete-share/{id}', [ShareController::class, 'delete']);
 Route::get('/show-share/{id}', [ShareController::class, 'share']);
 Route::post('/users/{userId}/shares/{shareId}', [ShareController::class, 'attachShareToUser']);
 Route::get('/users/{userId}/shares', [ShareController::class, 'getUserShares']);
+
+Route::post('/posts/{post}/react', [PostController::class, 'react']);

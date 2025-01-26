@@ -8,19 +8,32 @@
     <title>Document</title>
 </head>
 <script>
-    function toggleToLike(icon, numberOfLikesE) {
+    function toggleToLike(icon, numberOfLikesE, postId) {
         const likeBtn = document.querySelector('#' + icon);
         const numberOfLikesElement = document.querySelector('#' + numberOfLikesE);
-        let numberOfLikes = Number.parseInt(numberOfLikesElement.textContent, 10);
-        if (!likeBtn.classList.contains('isLiked')) {
-            likeBtn.classList.add('isLiked');
-            numberOfLikes++;
-            numberOfLikesElement.textContent = numberOfLikes;
-        } else {
-            likeBtn.classList.remove('isLiked');
-            numberOfLikes--;
-            numberOfLikesElement.textContent = numberOfLikes;
-        }
+        const csrfToken = document.querySelector(`#form-${postId} input[name="_token"]`).value;
+        const isLiked = likeBtn.classList.contains('isLiked');
+        const actionUrl = `/posts/${postId}/react`;
+        fetch(actionUrl, {
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': csrfToken,
+                'Content-Type': 'application/json',
+            },
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (!isLiked) {
+                    likeBtn.classList.add('isLiked');
+                    numberOfLikesElement.textContent = parseInt(numberOfLikesElement.textContent, 10) + 1;
+                } else {
+                    likeBtn.classList.remove('isLiked');
+                    numberOfLikesElement.textContent = parseInt(numberOfLikesElement.textContent, 10) - 1;
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
     }
 
     function toggleElementById(Id) {

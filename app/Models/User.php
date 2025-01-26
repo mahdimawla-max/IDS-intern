@@ -17,6 +17,15 @@ class User extends  Authenticatable
     {
         return $this->belongsToMany(Share::class, 'users_shares');
     }
+    public function reactions()
+    {
+        return $this->hasMany(Reaction::class);
+    }
+
+    public function likedPosts()
+    {
+        return $this->belongsToMany(Post::class, 'reactions');
+    }
 
 }
 

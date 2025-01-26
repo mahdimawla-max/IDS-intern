@@ -10,5 +10,14 @@ class Post extends Model
     public function user() {
         return $this->belongsTo(User::class);
     }
+    public function reactions()
+    {
+        return $this->hasMany(Reaction::class , 'postid');
+    }
+
+    public function reactionCount()
+    {
+        return $this->reactions()->count();
+    }
 }
 

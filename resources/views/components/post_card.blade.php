@@ -1,6 +1,9 @@
 @props(['post' ,'user'])
 <?php
 $timeAgo = \Illuminate\Support\Carbon::parse($post->created_at)->diffForHumans();
+$initialLiked = \App\Models\Reaction::query()->where('userid' , auth()->id())->where('postid' , $post->post_id)->exists();
+$numberOfLikes = \App\Models\Reaction::query()->where('postid' , $post->post_id)->count();
+//dd($initialLiked)
 ?>
 
 <article
@@ -20,10 +23,10 @@ $timeAgo = \Illuminate\Support\Carbon::parse($post->created_at)->diffForHumans()
                 </div>
             </div>
             @if (Request::is('profile'))
-            <form action="/delete-post/{{$post->post_id}}" method="post" class="bg-white h-fit">
-                @csrf
-                <button><img src="/images/trash.svg" alt="" class="w-[40px]"></button>
-            </form>
+                <form action="/delete-post/{{$post->post_id}}" method="post" class="bg-white h-fit">
+                    @csrf
+                    <button><img src="/images/trash.svg" alt="" class="w-[40px]"></button>
+                </form>
             @endif
         </div>
     </div>
@@ -37,14 +40,16 @@ $timeAgo = \Illuminate\Support\Carbon::parse($post->created_at)->diffForHumans()
 
         <div class="mt-6 mb-6 h-px bg-slate-200"></div>
         <div class="flex items-center justify-between mb-6">
-            <div class="flex items-center gap-2 text-white text-[23px]">
-                <svg onclick="toggleToLike('heart-icon-{{$post->id}}' , 'number-of-likes-{{$post->id}}')"
-                     class="w-[40px] heart-icon cursor-pointer" id="heart-icon-{{$post->id}}"
-                     width="106"
-                     height="97"
-                     viewBox="0 0 106 97"
-                     fill="none"
-                     xmlns="http://www.w3.org/2000/svg"
+            <form class="flex items-center gap-2 text-white text-[23px]" id="form-{{$post->post_id}}">
+                @csrf
+                <svg
+                    onclick="toggleToLike('heart-icon-{{$post->post_id}}' , 'number-of-likes-{{$post->post_id}}' , {{$post->post_id}})"
+                    class="w-[40px] heart-icon cursor-pointer {{($initialLiked)?'isLiked':''}}" id="heart-icon-{{$post->post_id}}"
+                    width="106"
+                    height="97"
+                    viewBox="0 0 106 97"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
                 >
                     <path
                         class="fill-color-shape"
@@ -57,8 +62,8 @@ $timeAgo = \Illuminate\Support\Carbon::parse($post->created_at)->diffForHumans()
                         fill="#e74c3c"
                     />
                 </svg>
-                <span id="number-of-likes-{{$post->id}}">6</span>
-            </div>
+                <span id="number-of-likes-{{$post->post_id}}">{{$numberOfLikes}}</span>
+            </form>
             <button class="py-2 px-4 text-white font-medium hover:bg-slate-50 dark:hover:bg-slate-700 rounded-lg">
                 Comments
             </button>
