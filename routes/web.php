@@ -54,7 +54,9 @@ Route::post('/delete-post/{id}', [PostController::class, 'delete']);
 Route::get('/show-post/{id}', [PostController::class, 'show']);
 
 Route::get('/comments', [CommentController::class, 'getAllComments']);
-Route::post('/create-comment', [CommentController::class, 'create']);
+
+
+
 Route::post('/update-commment/{id}', [CommentController::class, 'update']);
 Route::delete('/delete-comment/{id}', [CommentController::class, 'delete']);
 Route::get('/show-comment/{id}', [CommentController::class, 'show']);
@@ -72,3 +74,5 @@ Route::post('/users/{userId}/shares/{shareId}', [ShareController::class, 'attach
 Route::get('/users/{userId}/shares', [ShareController::class, 'getUserShares']);
 
 Route::post('/posts/{post}/react', [PostController::class, 'react']);
+
+Route::post('/create-comment', [CommentController::class, 'create']);

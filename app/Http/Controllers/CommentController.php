@@ -14,7 +14,7 @@ class CommentController extends Controller
     }
     public function create(Request $request){
         $comment = Comment::create($request->all());
-        return "comments created";
+        return response()->json(['success' => "comments created"]);
 
     }
     public function update(Request $request , $id){
