@@ -17,7 +17,7 @@ function selectedSmall() {
 }
 
 function toggleToLike(icon, numberOfLikesE, postId) {
-    const likeBtn = document.querySelector('#' + icon);
+    const likeBtn = document.getElementById(icon);
     const numberOfLikesElement = document.querySelector('#' + numberOfLikesE);
     const csrfToken = document.querySelector(`#form-${postId} input[name="_token"]`).value;
     const isLiked = likeBtn.classList.contains('isLiked');

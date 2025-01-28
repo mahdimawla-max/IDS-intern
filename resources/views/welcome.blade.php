@@ -9,8 +9,11 @@
     <script src="/js/main.js"></script>
 </head>
 <body>
-<x-header :categories="$categories"></x-header>
+@if(Request::is('home/*') || Request::is('home'))
+    <x-header :categories="$categories"></x-header>
+@else
+    <x-header></x-header>
+@endif
 @yield('content')
 </body>
-
 </html>

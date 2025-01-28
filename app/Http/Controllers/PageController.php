@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +16,7 @@ class PageController extends Controller
         $posts = Post::query()
             ->where('userid', $user->id)
             ->join('users', 'posts.userid', '=', 'users.id')
-            ->select('posts.*', 'users.*' , 'posts.id as post_id')
+            ->select('posts.*', 'users.*', 'posts.id as post_id')
             ->get();
         return view('pages.profile', ['user' => $user, 'posts' => $posts]);
     }
@@ -27,12 +28,12 @@ class PageController extends Controller
             $posts = Post::query()
                 ->where('categoryid', $catId)
                 ->join('users', 'posts.userid', '=', 'users.id')
-                ->select('posts.*', 'users.*' , 'posts.id as post_id')
+                ->select('posts.*', 'users.*', 'posts.id as post_id')
                 ->get();
         } else {
             $posts = Post::query()
                 ->join('users', 'posts.userid', '=', 'users.id')
-                ->select('posts.*', 'users.*' , 'posts.id as post_id')
+                ->select('posts.*', 'users.*', 'posts.id as post_id')
                 ->get();
         }
         return view('pages.home', ['categories' => $categories, 'posts' => $posts]);
@@ -42,13 +43,24 @@ class PageController extends Controller
     {
         return view('pages.login');
     }
+
     public function getSignInPage()
     {
         return view('pages.register');
     }
+
     public function getEditProfile()
     {
         $user = Auth::user();
-        return view('pages.profileedit' , ['user' => $user]);
+        return view('pages.profileedit', ['user' => $user]);
+    }
+
+    public function getCommentsPage($postId)
+    {
+        $comments = Comment::query()->where('postid', $postId)
+            ->join('users', 'comments.userid', '=', 'users.id')
+            ->select('comments.*', 'users.*', 'comments.id as comment_id')
+            ->get();
+        return view('pages.comment' , ['data' => $comments]);
     }
 }

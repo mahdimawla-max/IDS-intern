@@ -64,9 +64,9 @@ $numberOfLikes = \App\Models\Reaction::query()->where('postid', $post->post_id)-
                 </svg>
                 <span id="number-of-likes-{{$post->post_id}}">{{$numberOfLikes}}</span>
             </form>
-            <button class="py-2 px-4 text-white font-medium hover:bg-slate-50 dark:hover:bg-slate-700 rounded-lg">
+            <a href="/comment/{{$post->post_id}}" class="py-2 px-4 text-white font-medium hover:bg-slate-50 dark:hover:bg-slate-700 rounded-lg">
                 Comments
-            </button>
+            </a>
             <button class="py-2 px-4 text-white font-medium hover:bg-slate-50 dark:hover:bg-slate-700 rounded-lg">
                 Share
             </button>

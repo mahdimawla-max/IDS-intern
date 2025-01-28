@@ -76,3 +76,5 @@ Route::get('/users/{userId}/shares', [ShareController::class, 'getUserShares']);
 Route::post('/posts/{post}/react', [PostController::class, 'react']);
 
 Route::post('/create-comment', [CommentController::class, 'create']);
+
+Route::get('/comment/{postId}' , [PageController::class , 'getCommentsPage']);
