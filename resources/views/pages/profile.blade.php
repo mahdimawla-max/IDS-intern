@@ -9,6 +9,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gradient-to-r from-indigo-800 to-blue-900 min-h-screen flex flex-col justify-between">
+<?php
+//    dd($shares)
+?>
 <div
     class="bg-white mx-auto dark:bg-gray-800 rounded-xl shadow-2xl max-w-4xl w-full p-8 transition-all duration-300 animate-fade-in">
     <div class="flex flex-col md:flex-row">
@@ -65,6 +68,10 @@
 @foreach($posts as $post)
     <x-post_card :post="$post">
     </x-post_card>
+@endforeach
+@foreach($shares as $share)
+    <x-share-card :post="$share">
+    </x-share-card>
 @endforeach
 {{--<x-post_card>--}}
 {{--</x-post_card>--}}

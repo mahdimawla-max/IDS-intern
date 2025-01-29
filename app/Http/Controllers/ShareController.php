@@ -9,31 +9,44 @@ use Illuminate\Http\Request;
 
 class ShareController extends Controller
 {
-    public function getAllShares(){
+    public function getAllShares()
+    {
         $shares = Share::all();
         return $shares;
 
     }
-        public function create(Request $request){
-            $share = Share::create($request->all());
-            return "share craeted";
 
-        }
-        public function update(Request $request , $id){
-            $share = Share::findOrFail($id);
-            $share->update($request->all());
-            return "share updated";
-        }
-        public function delete(Request $request , $id){
-            $share = Share::findOrFail($id);
-            $share->delete();
-            return "share deleted";
-        }
-        public function show($id){
-            $share = Share::findOrFail($id);
-            return $share;
-        }
-        public function attachShareToUser($userId, $shareId)
+    public function create(Request $request, $userId)
+    {
+        $share = Share::firstOrCreate(
+            ['description' => $request['description'] , 'postid' => $request['postid']],
+        );
+        $user = User::findOrFail($userId);
+        $user->shares()->attach($share);
+        return redirect('/home');
+    }
+
+    public function update(Request $request, $id)
+    {
+        $share = Share::findOrFail($id);
+        $share->update($request->all());
+        return "share updated";
+    }
+
+    public function delete(Request $request, $id)
+    {
+        $share = Share::findOrFail($id);
+        $share->delete();
+        return "share deleted";
+    }
+
+    public function show($id)
+    {
+        $share = Share::findOrFail($id);
+        return $share;
+    }
+
+    public function attachShareToUser($userId, $shareId)
     {
         $user = User::findOrFail($userId);
         $share = Share::findOrFail($shareId);
@@ -49,5 +62,5 @@ class ShareController extends Controller
         $userShares = $user->shares;
         return $userShares;
     }
- 
+
 }

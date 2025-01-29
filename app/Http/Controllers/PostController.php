@@ -62,17 +62,17 @@ class PostController extends Controller
         // Build the query to filter posts by category and search term
         $posts = Post::query()
             ->when($categoryId, function ($queryBuilder) use ($categoryId) {
-                return $queryBuilder->where('category_id', $categoryId);
+                return $queryBuilder->where('categoryid', $categoryId);
             })
             ->where(function ($queryBuilder) use ($query) {
-                return $queryBuilder->where('title', 'like', '%' . $query . '%')
-                                     ->orWhere('content', 'like', '%' . $query . '%');
+                return $queryBuilder->where('content', 'like', '%' . $query . '%')
+                                     ->orWhere('description', 'like', '%' . $query . '%');
             })
             ->get();
 
         $categories = Category::all(); // Get categories for the dropdown
 
-        return view('search.results', compact('posts', 'categories'));
+        return view('pages.home', compact('posts', 'categories'));
     }
     public function react(Request $request, Post $post)
     {

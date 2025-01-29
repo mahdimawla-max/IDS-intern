@@ -13,7 +13,7 @@
                         class="block w-max" href="{{ route('post') }}">Create Post</a>
                 </li>
             </ul>
-            @if (Request::is('home/*') || Request::is('home'))
+            @if (Request::is('home/*') || Request::is('home') ||  Request::is('search') ||   Request::is('search/*') )
                 <x-search_card :categories="$categories"/>
             @endif
         </nav>

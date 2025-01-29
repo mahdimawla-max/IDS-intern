@@ -18,7 +18,10 @@ class PageController extends Controller
             ->join('users', 'posts.userid', '=', 'users.id')
             ->select('posts.*', 'users.*', 'posts.id as post_id')
             ->get();
-        return view('pages.profile', ['user' => $user, 'posts' => $posts]);
+        $shares = $user->shares;
+        $postIds = $shares->pluck('postid');
+        $sharePosts = Post::whereIn('id', $postIds)->get();
+        return view('pages.profile', ['user' => $user, 'posts' => $posts, 'shares' => $sharePosts]);
     }
 
     public function showSearchPage($catId = null)
@@ -61,6 +64,6 @@ class PageController extends Controller
             ->join('users', 'comments.userid', '=', 'users.id')
             ->select('comments.*', 'users.*', 'comments.id as comment_id')
             ->get();
-        return view('pages.comment' , ['data' => $comments]);
+        return view('pages.comment', ['data' => $comments]);
     }
 }

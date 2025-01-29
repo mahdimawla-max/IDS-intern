@@ -66,11 +66,17 @@ Route::post('/update-reaction/{id}', [ReactionController::class, 'update']);
 Route::delete('/delete-reaction/{id}', [ReactionController::class, 'delete']);
 Route::get('/show-reaction/{id}', [ReactionController::class, 'show']);
 Route::get('/shares', [ShareController::class, 'getAllShares']);
-Route::post('/create-share', [ShareController::class, 'create']);
+
+Route::post('/create-share/{userId}', [ShareController::class, 'create']);
+
+
 Route::post('/update-share/{id}', [ShareController::class, 'update']);
 Route::delete('/delete-share/{id}', [ShareController::class, 'delete']);
 Route::get('/show-share/{id}', [ShareController::class, 'share']);
+
 Route::post('/users/{userId}/shares/{shareId}', [ShareController::class, 'attachShareToUser']);
+
+
 Route::get('/users/{userId}/shares', [ShareController::class, 'getUserShares']);
 
 Route::post('/posts/{post}/react', [PostController::class, 'react']);
